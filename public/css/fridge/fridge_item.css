@@ -14,7 +14,7 @@
 
 body{
     background-image: url('../../assets/fridge-bg.svg');
-    background-repeat: no-repeat; 
+    repeat; 
     font-family: "Playfair Display", serif;
     font-optical-sizing: auto;
     margin: 0;

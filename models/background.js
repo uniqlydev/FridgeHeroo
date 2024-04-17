@@ -51,6 +51,23 @@ const sendExpirationEmail = async (items) => {
     }
 }
 
+const MealPlanEmail = async (items) => {
+    require('dotenv').config();
+
+    const mailerSend = new MailerSend({
+        apiKey: process.env.API_MAILER_KEY,
+    });
+
+    const sentFrom = new Sender("bren@trial-pq3enl6y3omg2vwr.mlsender.net", "FridgeHero");
+      
+    const recipients = [
+        new Recipient("bomber8183@gmail.com", "Brendan Castillo")
+        // new Recipient("matthew_wassmer@dlsu.edu.ph", "Matthew Wassmer")
+    ];
+      
+
+}
+
 const track = async (item) => {
     let days = 0;
 
@@ -58,7 +75,9 @@ const track = async (item) => {
     for (let i = 0; i < item.perishabledays; i++) {
         console.log(`Item ${item.item} has ${item.perishabledays - days} days left`);
         // Increment after 30 mins
-        await new Promise(resolve => setTimeout(resolve, 1800000));
+        // await new Promise(resolve => setTimeout(resolve, 1800000));
+        // After 30 seconds
+        await new Promise(resolve => setTimeout(resolve, 30000));
         days++;
         
         // Check if the item has expired

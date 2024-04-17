@@ -14,9 +14,9 @@
 
 body{
     background-image: url('../../assets/background-pic.png');
-    background-repeat: no-repeat; 
     font-family: "Playfair Display", serif;
     font-optical-sizing: auto;
+    background-repeat: repeat;
     margin: 0;
     padding: 0;
     background-size: 100% ; /* Cover the entire viewport */

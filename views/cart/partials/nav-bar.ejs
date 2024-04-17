@@ -1,4 +1,8 @@
-<script src="/js/navbar.js"></script>
+<script src="/js/navbar.js">
+    function goTo(page) {
+        window.location.href = page;
+    }
+</script>
 <div class="navbar-container">
     <nav class="nav-bar">
         <div class="logo-container">
@@ -6,9 +10,9 @@
             <p class="logo-text">fridgehero.</p>
         </div>
         <ul class="nav-links">
-            <li class="link1"><a href="/">Home</a></li>
-            <li class="link2"><a href="order/fruit">Products</a></li>
-            <li class="link3"><a href="#">Super Chef</a></li>
+            <li class="link1"><a onclick="goTo('/')">Home</a></li>
+            <li class="link2"><a onclick="goTo('/order/fruit')">Products</a></li>
+            <li class="link3"><a onclick="goTo('/superchef')"">Super Chef</a></li>
             <li class="link4"><img class="cart" src="assets/whitecart.png" id="cart"></li>
             <li class="link5"><img class="fridge" src="assets/whitefridge.png" id="fridge"></li>
             <li></li>

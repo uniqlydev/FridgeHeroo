@@ -13,7 +13,7 @@
 
 body{
     background-image: url('../../assets/background-pic.svg');
-    background-repeat: no-repeat; 
+    repeat; 
     font-family: "Playfair Display", serif;
     font-optical-sizing: auto;
     margin: 0;
