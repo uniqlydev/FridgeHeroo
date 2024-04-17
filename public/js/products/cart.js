@@ -28,25 +28,12 @@ document.addEventListener('DOMContentLoaded', function() {
             },
             body: JSON.stringify(data)
         }).then(response => {
-            return response.json();
-        }).catch(error => {
-            console.log(error);
-        });
-    });
-
-    const publishCart = document.getElementById('publish');
-
-    publishCart.addEventListener('click', function() {
-        fetch('/api/cart/publishCart', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            }
-        }).then(response => {
-            if (response.status === 200) {
-                alert('Cart published successfully');
-            }else {
-                alert('Cart is empty');
+            if (response.ok) {
+                alert("Item added to cart!");
+                // Reload the page
+                window.location.reload();
+            } else {
+                alert("Failed to add item to cart.");
             }
         }).catch(error => {
             console.log(error);

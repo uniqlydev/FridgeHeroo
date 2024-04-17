@@ -27,13 +27,19 @@ body{
     display:flex;
 }
 
-.kaartehan-container{
-    flex:2;
-    margin: -100px;
-    margin-top:180px;
-    padding-left: 90px;
-    margin-left: 17px;
+.kaartehan-container {
+    flex: 2;
+    margin-top: 180px;
+    text-align: center; /* Center the content */
 }
+
+.qr {
+    width: 200px; /* Set the width */
+    height: 200px; /* Set the height */
+    margin: auto; /* Center the QR code horizontally */
+    display: block; /* Make it a block element for centering */
+}
+
 
   
 img{
