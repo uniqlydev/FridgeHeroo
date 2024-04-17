@@ -67,16 +67,16 @@ app.get('/order/meat/steak', async (req, res) => {
     res.render('productpage/steak', { title: 'Meat' });
 });
 
-app.get('/order/dairy/milk', async (req, res) => {
-    res.render('productpage/milk', { title: 'milk' });
+app.get('/order/dairy/egg', async (req, res) => {
+    res.render('productpage/egg', { title: 'egg' });
 });
 
 app.get('/order/fruit/banana', async (req, res) => {
     res.render('productpage/banana', { title: 'banana' });
 });
 
-app.get('/order/vegetable/eggplant', async (req, res) => {
-    res.render('productpage/eggplant', { title: 'eggplant' });
+app.get('/order/vegetable/bellpepper', async (req, res) => {
+    res.render('productpage/bellpepper', { title: 'bellpepper' });
 
 
 });

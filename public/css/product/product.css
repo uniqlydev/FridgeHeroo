@@ -39,22 +39,6 @@ body{
     margin:50px;
   }
 
-  .steak, .shrimp, .chicken {
-
-    flex: 1; /* Equal width for each item */
-    border-radius: 100px;
-    border: 2px solid rgba(255, 255, 255, 0.5);
-    background-color: rgba(255, 255, 255, 0.78); /* More transparent background */
-    width: 300px;
-    height: 540px;
-    margin-right: 20px; /* Add some space between items */
-    align-content: center;
-    display: flex; /* Use flexbox */
-    flex-direction: column; /* Stack image and content vertically */
-    align-items: center; /* Center items horizontally */
-    justify-content: center; /* Center items vertically */
-  
-  }
 
   
 img{
@@ -63,6 +47,9 @@ img{
     align-self: center;
 }
 
+a{
+    color:white;
+}
 
 h4{
     color: #2B4447;
@@ -156,4 +143,9 @@ button {
 
 button:hover {
     background-color: #1c2c2f; /* Darker background color on hover */
+}
+
+.product-image-egg{
+    margin-left: -440px;
+    margin-top: -60px;
 }
