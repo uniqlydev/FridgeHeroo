@@ -2,6 +2,7 @@ const { db, addDoc, collection, getDocs, getDoc, updateDoc} = require("../models
 const { doc, setDoc } = require("firebase/firestore");
 const CartItem = require('../models/CartItem');
 const Cart = require('../models/CartModel');
+const background = require('../models/background');
 
 
 exports.addToCart = (req, res) => { 
@@ -30,6 +31,8 @@ exports.addToCart = (req, res) => {
         req.session.cart.items.push(cartItem);
     }
 
+    
+    console.log("Cart successfully updated.");
     console.log(req.session.cart);
     res.status(200).send(req.session.cart);
 };
@@ -46,6 +49,7 @@ const getItemsAndQuantity = (items) => {
 
     return itemsAndQuantity
 }
+
 
 
 exports.publishCart = async (req, res) => {
@@ -114,6 +118,10 @@ exports.publishCart = async (req, res) => {
 
         // Reset the cart
         req.session.cart = new Cart();
+
+        // Refresh the background process
+        console.log("Refreshing background process");
+        background.background();
 
         res.status(200).send("Order placed successfully");
     } catch (e) {

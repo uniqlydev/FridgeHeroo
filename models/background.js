@@ -128,7 +128,11 @@ const background = async () => {
     }
 };
 
-exports.background = background;
+const stopBackground = () => {
+    clearInterval(interval);
+}
+
+module.exports = {background, stopBackground};
 
 
 

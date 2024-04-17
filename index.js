@@ -87,10 +87,19 @@ app.get('/order/vegetable/eggplant', async (req, res) => {
 });
 
 app.get('/cart', async (req, res) => {
-    res.render('cart/cart', { 
-        title: 'Cart',
-        cart: req.session.cart
-    });
+    if (req.session.cart) {
+        console.log("Cart items: ", req.session.cart.items);
+        res.render('cart/cart', { 
+            title: 'Cart',
+            cart: req.session.cart
+        });
+    } else {
+        console.log("Cart is empty.");
+        res.render('cart/cart', { 
+            title: 'Cart',
+            cart: null
+        });
+    }
 });
 
 app.get('/fridge', async (req, res) => {
