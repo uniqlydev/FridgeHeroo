@@ -84,3 +84,7 @@ app.get('/order/vegetable/eggplant', async (req, res) => {
 app.get('/cart', async (req, res) => {
     res.render('cart/cart', { title: 'Cart' });
 });
+
+app.get('/fridge', async (req, res) => {
+    res.render('fridge/fridge', { title: 'Fridge' });
+});

@@ -1,4 +1,5 @@
 
+/* body text font */
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100..900&family=Noto+Serif+Gurmukhi:wght@100..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Xanh+Mono:ital@0;1&display=swap');
 
 /* cursive font */
@@ -12,7 +13,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Linefont:wght@4..1000&family=Noto+Sans+JP:wght@100..900&family=Noto+Serif+Gurmukhi:wght@100..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Xanh+Mono:ital@0;1&display=swap');
 
 body{
-    background-image: url('../../assets/background-pic.svg');
+    background-image: url('../../assets/fridge-bg.svg');
     background-repeat: no-repeat; 
     font-family: "Playfair Display", serif;
     font-optical-sizing: auto;
@@ -22,45 +23,24 @@ body{
     
 }
 
-
-
-.logo{
-    color:white;
+.body-container{
+    display:flex;
 }
 
-
-
-.products-container{
-    display: flex;
-    justify-content: space-between;
-    margin-top: 50px;
-    padding-left:40px;
-    position: relative;
-    margin:50px;
-  }
-
-  .product1, .product2, .product3 {
-
-    flex: 1; /* Equal width for each item */
-    border-radius: 100px;
-    border: 2px solid rgba(255, 255, 255, 0.5);
-    background-color: rgba(255, 255, 255, 0.78); /* More transparent background */
-    width: 300px;
-    height: 540px;
-    margin-right: 20px; /* Add some space between items */
-    align-content: center;
-    display: flex; /* Use flexbox */
-    flex-direction: column; /* Stack image and content vertically */
-    align-items: center; /* Center items horizontally */
-    justify-content: center; /* Center items vertically */
-  
-  }
+.kaartehan-container{
+    flex:2;
+    margin: -100px;
+    margin-top:180px;
+    padding-left: 90px;
+    margin-left: 17px;
+}
 
   
 img{
-    width: 300px;
-    height:290px;
+    width: 110px;
+    height:100px;
     align-self: center;
+    margin-left: -80px;
 }
 
 
@@ -80,4 +60,59 @@ p{
 
 a{
     color:white;
+}
+
+span{
+    font-weight: bolder;
+}
+.kaartehan-title{
+    font-family: "Dancing Script", cursive;
+    font-optical-sizing: auto;
+    color:white;
+    font-size: 80px;
+    font-style: italic;
+    justify-self: center;
+
+}
+
+.item1,.item2,.item3,.item4{
+    margin-top: 20px;
+    border-color: #2B4447 10px;
+    background-color: #F6F5F2;
+    border-radius: 190px;
+    width:600px;
+    display: flex;
+    justify-content: center;
+}
+
+.item1{
+    background-color: #F6F5F2;
+}
+
+.item2{
+    background-color: #F0EBE3;
+}
+
+.item3{
+    background-color: #F3D0D7;
+}
+
+.item4{
+    background-color: #FFEFEF;
+}
+
+
+p{
+    margin-top: 35px;
+    margin-left: -140px;
+}
+
+.fridge-container{
+    margin-top:65px;
+    display: flex;
+    flex-direction: column;
+    margin-left: 380px;
+    flex:3
+    
+
 }
