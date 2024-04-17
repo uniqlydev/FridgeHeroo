@@ -86,7 +86,6 @@ app.get('/order/fruit/banana', async (req, res) => {
 app.get('/order/vegetable/bellpepper', async (req, res) => {
     res.render('productpage/bellpepper', { title: 'bellpepper' });
 
-
 });
 
 app.get('/cart', async (req, res) => {
@@ -137,4 +136,9 @@ app.get('/confirm', async (req, res) => {
         item: itemName,
         quantity: quantity
     });
+});
+
+
+app.get('/superchef', async (req, res) => {
+    res.render('SuperChef/index', { title: 'SuperChef' });
 });

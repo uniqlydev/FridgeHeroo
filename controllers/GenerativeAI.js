@@ -12,7 +12,9 @@ exports.sendQuery = async (req, res) => {
         const fridge = await UserFridgeController.retrieveUserFridge(req, res);
         const fridgeJson = JSON.stringify(fridge);
 
+        // Get prompt from request body
         const { prompt } = req.body;
+
 
         const result = await model.generateContent(prompt + ` Base your answer with my fridge data ${fridgeJson}` + "Your output structure should be a json file consisting of recipe name, ingredients, required ingredients, available ingredients from the user fridge, and instructions. You are to provide a json file.\n Clean the json file make sure it doesn't have 1/2 cup or somehthing similar. If it has, 1/2 cup just make it 0.5 so it remains its data type. FOLLOW THIS STRICTLY if it's a NUMBER or a UNIT OF MEASUREMENT or it's A NUMBER OR DECIMAL. Don't add cup to it or teaspoons or something similar as it ruins the integrity of the json file.");
         const response = await result.response;
@@ -24,8 +26,17 @@ exports.sendQuery = async (req, res) => {
         // Parse the cleaned JSON string
         const jsonResponse = JSON.parse(cleanedJsonResponseString);
 
-        // Sending JSON response
-        res.status(200).json(jsonResponse);
+        // Convert to object
+        const responseObject = {
+            recipe: jsonResponse.recipe,
+            ingredients: jsonResponse.ingredients,
+            requiredIngredients: jsonResponse.requiredIngredients,
+            availableIngredients: jsonResponse.availableIngredients,
+            instructions: jsonResponse.instructions
+        };
+
+        // Send response
+        res.status(200).send(responseObject);
     } catch (e) {
         res.status(500).send(e.message);
     }

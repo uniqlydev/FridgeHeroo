@@ -1,0 +1,103 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100..900&family=Noto+Serif+Gurmukhi:wght@100..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Xanh+Mono:ital@0;1&display=swap');
+
+        /* cursive font */
+        @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&family=Noto+Sans+JP:wght@100..900&family=Noto+Serif+Gurmukhi:wght@100..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Xanh+Mono:ital@0;1&display=swap');
+
+        /*logo font  */
+
+        @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&family=Linefont:wght@4..1000&family=Noto+Sans+JP:wght@100..900&family=Noto+Serif+Gurmukhi:wght@100..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Xanh+Mono:ital@0;1&display=swap');
+
+        /* logo-text font */
+        @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Linefont:wght@4..1000&family=Noto+Sans+JP:wght@100..900&family=Noto+Serif+Gurmukhi:wght@100..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Xanh+Mono:ital@0;1&display=swap');
+
+        body {
+            background-image: url('../../assets/background-pic.png');
+            font-family: "Playfair Display", serif;
+            background-repeat: repeat;
+            font-optical-sizing: auto;
+            margin: 0;
+            padding: 0;
+            background-size: 100% ; /* Cover the entire viewport */
+        }
+
+        .main {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .main .left {
+            /* Make items here on top of each other */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            width: 50%;
+            height: 100%;
+        }
+
+        .main .left .SuperChef {
+            width: 20%;
+            height: 20%;
+        }
+
+
+        .main .right {
+            width: 50%;
+            height: 80%;
+            /* Center all elements */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            background-color: whitesmoke;
+            border-radius: 50px;
+            margin: 60px 60px 60px 60px;
+        }
+
+        .response-box {
+            width: 80%;
+            display: flex;
+            height: 800px;
+            max-height: 800px;
+            border: 1px solid #000;
+            overflow-y: scroll;
+            padding: 20px;
+
+            /* Make every element stacked */
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: flex-start;
+
+        }
+
+        /* Make superchef on top of query */
+
+        .query {
+            box-shadow: inset #abacaf 0 0 0 2px;
+            border: 0;
+            background: rgba(0, 0, 0, 0);
+            appearance: none;
+            width: 30%;
+            position: relative;
+            border-radius: 3px;
+            padding: 9px 12px;
+            line-height: 1.4;
+            color: #000;
+            font-size: 16px;
+            font-weight: 400;
+            height: 40px;
+            transition: all 0.2s ease;
+        }
+
+        .query:hover {
+            box-shadow: 0 0 0 0 #fff inset, #1de9b6 0 0 0 2px;
+        }
+
+        .query:focus {
+            background: #fff;
+            outline: 0;
+            box-shadow: 0 0 0 0 #fff inset, #1de9b6 0 0 0 3px;
+        }

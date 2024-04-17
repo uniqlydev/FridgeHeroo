@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Try - SuperChef</title>
+    <link rel="stylesheet" href="/css/SuperChef/index.css">
+    <script defer src="/js/SuperChef/query.js"></script>
+
+    <%-include('../homepage/partials/header.ejs')%>
+</head>
+<body>
+    <%-include('../homepage/partials/nav-bar.ejs')%>
+
+
+    <div class="main">
+        <div class="left">
+            <img src="/assets/email_assets/cartoon.png" class="SuperChef" alt="">
+            <input type="text" class="query" name="meal_query" id="meal_query" placeholder="Go ahead! Ask for Recommendations!">
+        </div>
+
+        <div class="right">
+            <div class="response-box">
+                <p>Hey there! I am SuperChef, your personal assistant for all your food queries. I can help you with recipes, ingredients, and much more. Just ask me anything and I will be happy to help you out!</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
