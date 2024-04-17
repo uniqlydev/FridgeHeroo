@@ -13,14 +13,13 @@ exports.sendQuery = async (req, res) => {
         // Retrieve fridge data 
         const fridge = await UserFridgeController.retrieveUserFridge(req, res);
 
-        console.log(fridge);
-
         // Make fridge into a json 
         const fridgeJson = JSON.stringify(fridge);
 
+
         const { prompt } = req.body;
 
-        const result = await model.generateContent(prompt + `Base your answer with my fridge data ${fridgeJson}` + "Your output structure should be \nIngredients:\nWhat I have\nWhat I should buy\nRecipe name:\nInstructions");
+        const result = await model.generateContent(prompt + `Base your answer with my fridge data ${fridgeJson}` + "Your output structure should be \nIngredients:\nWhat I have\nWhat I should buy\nRecipe name:\nInstructions\n NOTE: You can suggest meals that goes beyond the available ingredients, just put it in the what i dont have");
         const response = await result.response;
         const text = response.text();
     
@@ -30,5 +29,9 @@ exports.sendQuery = async (req, res) => {
     }catch(e) {
         res.status(500).send(e.message);
     }
+}
+
+exports.generateCartRecommendations = async (req,res) => {
+    
 }
 

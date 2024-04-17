@@ -1,28 +1,40 @@
-const { db, addDoc, collection, getDocs} = require("../models/firebase");
+const { db, addDoc, collection, getDocs, getDoc, updateDoc} = require("../models/firebase");
 const { doc, setDoc } = require("firebase/firestore");
 const CartItem = require('../models/CartItem');
 const Cart = require('../models/CartModel');
 const { MailerSend, EmailParams, Sender, Recipient } = require("mailersend");
 const { resolve } = require("path");
+const UserFridge = require('../models/UserFridge');
 
-exports.addToCart = (req,res) => { 
-    const {item, quantity} = req.body;
+exports.addToCart = (req, res) => { 
+    const { item, quantity } = req.body;
 
-    const itemadd = {
+    const itemToAdd = {
         item,
         perishabledays: 5,
-    }
-
-    const cartItem = new CartItem(itemadd, quantity);
+    };
 
     if (!req.session.cart) {
         req.session.cart = new Cart();
     }
 
-    req.session.cart.items.push(cartItem);
+    // Check if the item already exists in the cart
+    const existingItemIndex = req.session.cart.items.findIndex(cartItem => {
+        return cartItem.item.item === itemToAdd.item && cartItem.item.perishabledays === itemToAdd.perishabledays;
+    });
+
+    if (existingItemIndex !== -1) {
+        // Item already exists, update the quantity
+        req.session.cart.items[existingItemIndex].quantity += quantity;
+    } else {
+        // Item doesn't exist, add it to the cart
+        const cartItem = new CartItem(itemToAdd, quantity);
+        req.session.cart.items.push(cartItem);
+    }
 
     res.status(200).send(req.session.cart);
-}
+};
+
 
 
 const getItemsAndQuantity = (items) => {
@@ -44,8 +56,6 @@ exports.publishCart = async (req, res) => {
     }
 
     const dateToday = new Date();
-
-    // Format YYYY-MM-DD
     const formatDate = dateToday.toISOString().split('T')[0];
 
     try {
@@ -67,13 +77,40 @@ exports.publishCart = async (req, res) => {
         // Define the document ID for the user's fridge
         const documentID = "testuser";
 
-        // Set items and quantity in the user's fridge collection
         const fridgeCollection = collection(db, 'Fridge');
-        await setDoc(
-            doc(fridgeCollection, documentID), {
-                items: itemsAndQuantity
-            }
-        )
+
+        // Check if the document exists
+        const docSnap = await getDoc(doc(fridgeCollection, documentID));
+        if (docSnap.exists()) {
+            // If document exists, update it with new items or increment quantity
+            const existingFridgeData = docSnap.data().items;
+            itemsAndQuantity.forEach(newItem => {
+                const existingItemIndex = existingFridgeData.findIndex(item => item.item === newItem.productId.item);
+                if (existingItemIndex !== -1) {
+                    // If the item already exists, update its quantity
+                    existingFridgeData[existingItemIndex].quantity += newItem.quantity;
+                } else {
+                    // If the item does not exist, add it to the fridge data
+                    existingFridgeData.push({ item: newItem.productId.item, quantity: newItem.quantity });
+                }
+            });
+        
+            // Set the updated fridge data in the database
+            await setDoc(doc(fridgeCollection, documentID), {
+                items: existingFridgeData
+            });
+        } else {
+            // If document does not exist, create it
+            const fridgeData = itemsAndQuantity.map(item => ({
+                item: item.productId.item,
+                quantity: item.quantity
+            }));
+
+            await setDoc(doc(fridgeCollection, documentID), {
+                items: fridgeData
+            });
+
+        }
 
         // Reset the cart
         req.session.cart = new Cart();
@@ -83,6 +120,8 @@ exports.publishCart = async (req, res) => {
         res.status(500).send(e.message);
     }
 }
+
+
 
 
 const sendExpirationEmail = async () => {
