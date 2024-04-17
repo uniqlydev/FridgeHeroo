@@ -92,3 +92,7 @@ app.get('/cart', async (req, res) => {
         cart: req.session.cart
     });
 });
+
+app.get('/fridge', async (req, res) => {
+    res.render('fridge/fridge', { title: 'Fridge' });
+});
