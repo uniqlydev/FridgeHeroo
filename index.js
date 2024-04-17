@@ -36,7 +36,8 @@ app.use('/api/cart', CartRoutes);
 
 
 app.get('/', async (req, res) => {
-    
+    res.render('homepage/index', { title: 'Homepage' });
+
 });
 
 
