@@ -8,6 +8,8 @@ const GenRoutes = require('./routes/GenAIRoutes');
 const CartController = require('./controllers/CartController');
 const FridgeRoutes = require('./routes/FridgeRoutes');
 const background = require('./models/background');
+const userFridgeController = require('./controllers/UserFridgeController');
+const qrRoutes = require('./routes/QRRoutes')
 
 
 const app = express();
@@ -39,6 +41,7 @@ app.use('/api/foods', FoodRoutes);
 app.use('/api/cart', CartRoutes);
 app.use('/api/gen', GenRoutes);
 app.use('/api/fridge', FridgeRoutes)
+app.use('/qr-code', qrRoutes);
 
 // Background processes
 background.background();
@@ -103,5 +106,35 @@ app.get('/cart', async (req, res) => {
 });
 
 app.get('/fridge', async (req, res) => {
-    res.render('fridge/fridge', { title: 'Fridge' });
+    const items = await userFridgeController.retrieveUserFridge(req, res);
+
+    res.render('fridge/fridge', { 
+        title: 'Fridge',
+        items: items // To access items[0].item, items[0].quantity, etc.
+    });
+});
+
+app.get('/fridge/:itemid', async (req, res) => {
+    try {
+        const itemid = req.params.itemid; // Get the item ID from the URL
+        const item = await userFridgeController.retrieveItem(req, res); 
+
+        // Render the corresponding item's details dynamically
+        res.render('fridge/fridge_item', {
+            item: item
+        })
+    } catch (error) {
+        res.status(500).send(error.message);
+    }
+});
+
+app.get('/confirm', async (req, res) => {
+    const itemName = req.query.itemname;
+    const quantity = req.query.quantity;
+
+    res.render('fridge/confirmation_page', { 
+        title: 'Confirm',
+        item: itemName,
+        quantity: quantity
+    });
 });

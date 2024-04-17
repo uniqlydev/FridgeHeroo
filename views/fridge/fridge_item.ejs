@@ -8,12 +8,14 @@
     <link rel="stylesheet" href="/css/nav-bar.css">
 
 
-    <link rel="stylesheet" href="/css/fridge/fridge.css"> 
+    <link rel="stylesheet" href="/css/fridge/fridge_item.css"> 
     <!-- scripts -->
     <script src="js/homepage/select-category.js"></script>
     <script src="/js/navbar.js"></script>
 
     <script defer src="/js/fridge/fridge.js"></script>
+
+    <script src="/js/fridge/qr_code.js"></script>
 
 </head>
     <body>
@@ -39,29 +41,13 @@
             <div class="body-container">
                 <div class="kaartehan-container">
                     <h3 class="kaartehan-title"> keep it fresh! </h3>
+                    <img src="" alt="scan me" class="qr" id="qr_code">
+                    <p>Item: <span id="item"> <%= item.item %> </span></p>
+                    <p>Quantity: <span class="quantity" id="quantity"> <%= item.quantity %> </span></p>
+                    <p>Perishable Days: <%= item.perishabledays %></p>
+                    <p>Perished: <%= item.perished %></p>
                 </div>
-                
-                <div class="fridge-container">
-                    <% items.forEach((item, index) => { %>
-                        <div class="item" id="item-<%= index %>">
-                            <img src="/assets/banana.png" alt="<%= item.item %>">
-                            <h3>You have <span><%= item.quantity %></span> 
-                                <span class="itemname"> <!-- Add the itemname class here -->
-                                    <%= item.item %>
-                                </span>
-                                /s.
-                            </h3>
-                            <p><span><%= item.perishabledays %></span> days left!</p>
-                        </div>
-                        
-                    <% }); %>
-                </div>
-            </div>    
-
-                
-                  
-                        
-            </div>    
+            </div>      
             <!-- END OF BODY CONTAINER -->
         </div>
 </body>

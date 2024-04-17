@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Confirmation Page</title>
+    <link rel="stylesheet" href="/css/fridge/confirm.css">
+
+    <script defer src="/js/fridge/confirm.js"></script>
+    
+</head>
+<body>
+    <div class="container">
+        
+        <h1>Are you sure you want to use <span id="item"><%= item %></span></h1>
+        <input type="number" placeholder="Input amount" id="quantity">
+        <div class="button-container">
+            <button class="confirm-button" id="yes">Yes</button>
+            <button class="cancel-button" id="no">No</button>
+        </div>
+    </div>
+</body>
+</html>
