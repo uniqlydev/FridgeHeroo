@@ -2,9 +2,7 @@ const { db, addDoc, collection, getDocs, getDoc, updateDoc} = require("../models
 const { doc, setDoc } = require("firebase/firestore");
 const CartItem = require('../models/CartItem');
 const Cart = require('../models/CartModel');
-const { MailerSend, EmailParams, Sender, Recipient } = require("mailersend");
-const { resolve } = require("path");
-const UserFridge = require('../models/UserFridge');
+
 
 exports.addToCart = (req, res) => { 
     const { item, quantity } = req.body;
@@ -32,6 +30,7 @@ exports.addToCart = (req, res) => {
         req.session.cart.items.push(cartItem);
     }
 
+    console.log(req.session.cart);
     res.status(200).send(req.session.cart);
 };
 
@@ -91,7 +90,7 @@ exports.publishCart = async (req, res) => {
                     existingFridgeData[existingItemIndex].quantity += newItem.quantity;
                 } else {
                     // If the item does not exist, add it to the fridge data
-                    existingFridgeData.push({ item: newItem.productId.item, quantity: newItem.quantity });
+                    existingFridgeData.push({ item: newItem.productId.item, quantity: newItem.quantity, perishabledays: newItem.productId.perishabledays, perished: false});
                 }
             });
         
@@ -103,13 +102,14 @@ exports.publishCart = async (req, res) => {
             // If document does not exist, create it
             const fridgeData = itemsAndQuantity.map(item => ({
                 item: item.productId.item,
-                quantity: item.quantity
+                quantity: item.quantity,
+                perishabledays: item.productId.perishabledays,
+                perished: false
             }));
 
             await setDoc(doc(fridgeCollection, documentID), {
                 items: fridgeData
             });
-
         }
 
         // Reset the cart
@@ -124,35 +124,7 @@ exports.publishCart = async (req, res) => {
 
 
 
-const sendExpirationEmail = async () => {
-    require('dotenv').config();
 
-    const mailerSend = new MailerSend({
-        apiKey: process.env.API_MAILER_KEY,
-    });
-
-      
-    const sentFrom = new Sender("bren@trial-pq3enl6y3omg2vwr.mlsender.net", "FridgeHero");
-      
-    const recipients = [
-        new Recipient("bomber8183@gmail.com", "Brendan Castillo")
-    ];
-      
-    const emailParams = new EmailParams()
-        .setFrom(sentFrom)
-        .setTo(recipients)
-        .setReplyTo(sentFrom)
-        .setSubject("This is a Subject")
-        .setHtml("<strong>This is the HTML content</strong>")
-        .setText("This is the text content");
-
-    try {
-        await mailerSend.email.send(emailParams);
-        console.log('Email sent successfully.');
-    } catch (error) {
-        console.error('Failed to send email:', error);
-    }
-}
 
 // Function to track perishable days and log expiration
 const trackPerishableDays = async (items) => {

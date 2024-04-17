@@ -1,8 +1,9 @@
 <%-include('partials/header.ejs')%>
 
     <link rel="stylesheet" href="/css/product/steak.css"> 
-    <!-- scripts -->
-    <script src="scripts/home.js"></script>
+
+    <!-- Handle back-end -->
+    <script defer src="/js/products/cart.js"></script>
 
 </head>
     <body>
@@ -16,31 +17,32 @@
                         <% for (let i = 0; i < 6; i++) { %>
                          <%=    %>&nbsp;&nbsp;&nbsp;
                     <% } %>
-                    250kcal</p>
+                    <span id="calories">250</span>kcal</p>
                     <p>Total fat
                         <% for (let i = 0; i < 6; i++) { %>
                             <%=    %>&nbsp;&nbsp;&nbsp;
                        <% } %>
-                       20g</p>
+                    <span id="fat">20</span>g</p>
                     <p>Protein
                         <% for (let i = 0; i < 5; i++) { %>
                         <%=    %>&nbsp;&nbsp;&nbsp;&nbsp;
-                   <% } %>25g</p>
+                   <% } %> <span id="protein">25</span>g</p>
                 </div>
                 <img src="/assets/steak.png" class="product-image">
                 <div class = "product-information-container">
-                    <h3 class ="product-name"> prime porterhouse steak</h3>
+                    <h3 class ="product-name" id="product_name"> prime porterhouse steak</h3>
                     <p class = "product-description">Try this signature porterhouse steak, best served grilled medium-rare. <br> Store it in the refrigerator to maintain freshness.</p>
                     <div class="quantity-container">
-                        <h4 class ="product-quantity">quantity: </h4>
+                        <h4 class ="product-quantity">quantity: <span id="quantity">0</span> </h4>
                         <div class="operations">
-                            <img src="/assets/minus.png" class="minus">
-                            <img src="/assets/plus.png" class="plus">
+                            <img src="/assets/minus.png" class="minus" id="subtract">
+                            <img src="/assets/plus.png" class="plus" id="add">
 
                         </div>
                     </div>
                     
-                    <button>Add to cart!</button>
+                    <button id="add-to-cart">Add to cart!</button>
+                    <button id="publish">publish cart</button>
                 </div>
         </div>
 </body>
