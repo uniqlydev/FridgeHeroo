@@ -45,4 +45,11 @@ app.listen(port, () => {
     console.log(`Server is running on port ${port}`);
 });
 
+app.get('/order/meat', async (req, res) => {
+    res.render('category/choose-meat', { title: 'Meat' });
+});
 
+
+app.get('/order/meat/steak', async (req, res) => {
+    res.render('productpage/steak', { title: 'Meat' });
+});

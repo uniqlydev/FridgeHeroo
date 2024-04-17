@@ -1,4 +1,27 @@
 
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100..900&family=Noto+Serif+Gurmukhi:wght@100..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Xanh+Mono:ital@0;1&display=swap');
+
+/* cursive font */
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&family=Noto+Sans+JP:wght@100..900&family=Noto+Serif+Gurmukhi:wght@100..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Xanh+Mono:ital@0;1&display=swap');
+
+ /*logo font  */
+
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&family=Linefont:wght@4..1000&family=Noto+Sans+JP:wght@100..900&family=Noto+Serif+Gurmukhi:wght@100..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Xanh+Mono:ital@0;1&display=swap');
+
+/* logo-text font */
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Linefont:wght@4..1000&family=Noto+Sans+JP:wght@100..900&family=Noto+Serif+Gurmukhi:wght@100..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Xanh+Mono:ital@0;1&display=swap');
+
+body{
+    background-image: url('../../assets/background-pic.png');
+    background-repeat: no-repeat; 
+    font-family: "Playfair Display", serif;
+    font-optical-sizing: auto;
+    margin: 0;
+    padding: 0;
+    background-size: 100% ; /* Cover the entire viewport */
+    
+}
+
 ul {
     list-style-type: none; /* Remove default list styles */
     padding: 0;
@@ -17,7 +40,6 @@ a{
 .nav-bar{
     padding-left: 500px;
 }
-
 
 
 .logo{
@@ -65,3 +87,12 @@ a{
 .link1, .link2, .link3{
     margin-right: 70px;
 }
+
+
+p{
+    color: darkslategray;
+    font-size: 15px;
+    text-align: center;
+    padding: 10px;
+}
+

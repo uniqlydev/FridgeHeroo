@@ -12,7 +12,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Linefont:wght@4..1000&family=Noto+Sans+JP:wght@100..900&family=Noto+Serif+Gurmukhi:wght@100..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Xanh+Mono:ital@0;1&display=swap');
 
 body{
-    background-image: url('../../assets/background-pic.svg');
+    background-image: url('../../assets/product-bg.svg');
     background-repeat: no-repeat; 
     font-family: "Playfair Display", serif;
     font-optical-sizing: auto;
@@ -58,8 +58,8 @@ body{
 
   
 img{
-    width: 300px;
-    height:290px;
+    width: 600px;
+    height:590px;
     align-self: center;
 }
 
@@ -71,9 +71,89 @@ h4{
     margin-bottom: -5px;
 }
 
-p{
-    color: darkslategray;
-    font-size: 15px;
-    text-align: center;
+p {
+    color: white;
+    font-size: 16px;
     padding: 10px;
+}
+
+.nutritional-facts {
+    margin-top: 170px;
+    margin-left: 40px;
+    display: flex; /* Display children elements in a flex layout */
+    flex-direction: column; /* Arrange children elements vertically */
+    align-items: flex-start; /* Align children elements to the left */
+}
+
+.product-image{
+    margin-left: -420px;
+}
+
+.product-name{
+    font-weight: bolder;
+    font-size: 55px;
+    margin-left: -520px;
+    margin-right: 200px;
+    margin-top: 80px;
+    color: #2B4447;
+    
+
+}
+
+.product-description{
+    font-weight: bold;
+    font-size: 15px;
+    margin-left: -520px;
+    margin-right: 200px;
+    margin-top: 50px;
+    color: darkslategray;
+
+}
+
+.product-quantity{
+    font-weight: bold;
+    margin-left: -350px;
+    margin-right: 200px;
+    margin-top: 60px;
+    color: darkslategray;
+
+}
+.plus, .minus{
+    width:40px;
+    height:40px;
+    margin-right: 5px;
+    margin-top: -120px;
+    margin-bottom: 10px;
+
+}
+
+.minus{
+    margin-left:-120px;
+}
+
+.operations{
+    margin-right: 90px;
+}
+
+
+button{
+    margin-left: -250px;
+    margin-right: 200px;
+    margin-top: 30px;
+    
+}
+
+button {
+    border-radius: 20px; /* Rounded corners */
+    background-color: #2B4447; /* Background color */
+    color: white; /* Text color */
+    padding: 15px 30px; /* Padding for a bigger size */
+    font-size: 16px; /* Font size */
+    border: none; /* Remove border */
+    cursor: pointer; /* Cursor style */
+    transition: background-color 0.3s; /* Smooth transition on hover */
+}
+
+button:hover {
+    background-color: #1c2c2f; /* Darker background color on hover */
 }
