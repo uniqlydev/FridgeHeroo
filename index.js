@@ -51,7 +51,36 @@ app.get('/order/meat', async (req, res) => {
     res.render('category/choose-meat', { title: 'Meat' });
 });
 
+app.get('/order/dairy', async (req, res) => {
+    res.render('category/choose-dairy', { title: 'dairy' });
+});
+
+app.get('/order/fruit', async (req, res) => {
+    res.render('category/choose-fruit', { title: 'fruit' });
+});
+
+app.get('/order/vegetable', async (req, res) => {
+    res.render('category/choose-vegetable', { title: 'vegetable' });
+});
 
 app.get('/order/meat/steak', async (req, res) => {
     res.render('productpage/steak', { title: 'Meat' });
+});
+
+app.get('/order/dairy/milk', async (req, res) => {
+    res.render('productpage/milk', { title: 'milk' });
+});
+
+app.get('/order/fruit/banana', async (req, res) => {
+    res.render('productpage/banana', { title: 'banana' });
+});
+
+app.get('/order/vegetable/eggplant', async (req, res) => {
+    res.render('productpage/eggplant', { title: 'eggplant' });
+
+
+});
+
+app.get('/cart', async (req, res) => {
+    res.render('cart/cart', { title: 'Cart' });
 });

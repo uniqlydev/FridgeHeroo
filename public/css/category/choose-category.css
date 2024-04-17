@@ -39,7 +39,7 @@ body{
     margin:50px;
   }
 
-  .steak, .shrimp, .chicken {
+  .product1, .product2, .product3 {
 
     flex: 1; /* Equal width for each item */
     border-radius: 100px;
