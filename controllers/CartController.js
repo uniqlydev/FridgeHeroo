@@ -1,4 +1,5 @@
-const { db, addDoc, collection, getDocs } = require("../models/firebase");
+const { db, addDoc, collection, getDocs} = require("../models/firebase");
+const { doc, setDoc } = require("firebase/firestore");
 const CartItem = require('../models/CartItem');
 const Cart = require('../models/CartModel');
 const { MailerSend, EmailParams, Sender, Recipient } = require("mailersend");
@@ -23,7 +24,20 @@ exports.addToCart = (req,res) => {
     res.status(200).send(req.session.cart);
 }
 
-exports.publishCart = async (req,res) => {
+
+const getItemsAndQuantity = (items) => {
+    const itemsAndQuantity = [];
+
+    for (const item of items) {
+        const { item: productId, quantity } = item;
+        itemsAndQuantity.push({ productId, quantity });
+    }
+
+    return itemsAndQuantity
+}
+
+
+exports.publishCart = async (req, res) => {
     if (!req.session.cart) {
         res.status(500).send("Cart is empty");
         return;
@@ -43,18 +57,33 @@ exports.publishCart = async (req,res) => {
             user: "testuser"
         }
 
+        // Add cart data to Orders collection
         const cartCollection = collection(db, 'Orders');
         const docRef = await addDoc(cartCollection, cartData);
 
+        // Get items and quantity from the cart
+        const itemsAndQuantity = getItemsAndQuantity(req.session.cart.items);
+
+        // Define the document ID for the user's fridge
+        const documentID = "testuser";
+
+        // Set items and quantity in the user's fridge collection
+        const fridgeCollection = collection(db, 'Fridge');
+        await setDoc(
+            doc(fridgeCollection, documentID), {
+                items: itemsAndQuantity
+            }
+        )
+
+        // Reset the cart
         req.session.cart = new Cart();
 
         res.status(200).send("Order placed successfully");
-
-
-    }catch (e) {
+    } catch (e) {
         res.status(500).send(e.message);
     }
 }
+
 
 const sendExpirationEmail = async () => {
     require('dotenv').config();
