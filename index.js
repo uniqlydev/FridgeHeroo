@@ -2,6 +2,9 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const path = require('path');
 const session = require('express-session');
+const FoodRoutes = require('./routes/FoodProductRoutes');
+const CartRoutes = require('./routes/CartRoutes');
+const CartController = require('./controllers/CartController');
 
 const app = express();
 app.use(express.json()) 
@@ -28,10 +31,13 @@ app.use(session
     }));
 
 // Routes (to be defined later)
+app.use('/api/foods', FoodRoutes);
+app.use('/api/cart', CartRoutes);
 
 
-app.get('/', (req, res) => {
+app.get('/', async (req, res) => {
     res.render('homepage/index', { title: 'Homepage' });
+
 });
 
 
