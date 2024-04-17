@@ -1,0 +1,67 @@
+
+ul {
+    list-style-type: none; /* Remove default list styles */
+    padding: 0;
+  }
+  
+  li {
+    display: inline; /* Display list items horizontally */
+    margin-right: 10px; /* Add some space between items */
+  }
+  
+a{
+    font-family: "Playfair Display", serif;
+    color: #2B4447;
+}
+
+.nav-bar{
+    padding-left: 500px;
+}
+
+
+
+.logo{
+    font-family: "Linefont", system-ui;
+    /* color: #CEA0A4; */
+    color: white;
+    font-size: 80px;
+    margin-bottom: -30px;
+    margin-top: -30px;
+    
+
+}
+
+.logo-container{
+    margin-left: -2100px;
+}
+
+.logo-text{
+    font-family: "Lato", sans-serif;
+    margin-top: -10px;
+    font-size: 30px;
+    color: #CEA0A4;
+ 
+}
+
+.nav-links{
+    color: #2B4447;
+    font-size: 23px;
+    margin: 0px;
+    margin-top: -90px;
+    margin-left:700px;
+
+
+}
+
+.fridge, .cart{
+    width: 33px;
+    height:30px;
+    margin-right: 40px;
+    margin-left:20px;
+    margin-bottom: -4px;
+}
+
+
+.link1, .link2, .link3{
+    margin-right: 70px;
+}
