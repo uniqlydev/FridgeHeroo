@@ -31,7 +31,7 @@ app.use(session
 
 
 app.get('/', (req, res) => {
-    res.send("I love you baby");
+    res.render('homepage/index', { title: 'Homepage' });
 });
 
 

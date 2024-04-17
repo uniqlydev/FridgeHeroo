@@ -1,0 +1,113 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100..900&family=Noto+Serif+Gurmukhi:wght@100..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Xanh+Mono:ital@0;1&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&family=Noto+Sans+JP:wght@100..900&family=Noto+Serif+Gurmukhi:wght@100..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Xanh+Mono:ital@0;1&display=swap');
+
+
+body{
+    background-image: url('../../assets/background-pic.png');
+    background-repeat: no-repeat; 
+    font-family: "Playfair Display", serif;
+    font-optical-sizing: auto;
+    margin: 0;
+    padding: 0;
+    background-size: 100% ; /* Cover the entire viewport */
+    
+}
+
+ul {
+    list-style-type: none; /* Remove default list styles */
+    padding: 0;
+  }
+  
+  li {
+    display: inline; /* Display list items horizontally */
+    margin-right: 10px; /* Add some space between items */
+  }
+
+.body-parents{
+    display:flex;
+}
+
+.kaartehan-container{
+    flex:1;
+    margin: -100px;
+    margin-top:150px;
+    padding-left: 90px;
+    margin-left: 18px;
+    margin-right: 40px;
+}
+  .category-container{
+    flex:4;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 50px;
+    padding-left:40px;
+    position: relative;
+  }
+
+  .meat, .fruit, .vegetable, .dairy {
+
+    flex: 1; /* Equal width for each item */
+    border-radius: 200px;
+    border: 2px solid rgba(255, 255, 255, 0.5);
+    background-color: rgba(255, 255, 255, 0.78); /* More transparent background */
+    width: 220px;
+    height: 540px;
+    margin-right: 10px; /* Add some space between items */
+    align-content: center;
+    display: flex; /* Use flexbox */
+    flex-direction: column; /* Stack image and content vertically */
+    align-items: center; /* Center items horizontally */
+    justify-content: center; /* Center items vertically */
+  
+  }
+
+  
+img{
+    width: 200px;
+    height:190px;
+    align-self: center;
+}
+
+.meat-pic{
+    width: 240px ;
+    padding-top: 12px;
+}
+
+h4{
+    color: #2B4447;
+    font-weight: bolder;
+    font-size: x-large;
+    margin-bottom: -5px;
+}
+
+p{
+    color: darkslategray;
+    font-size: 15px;
+    text-align: center;
+    padding: 10px;
+}
+
+.dairy-text{
+    padding-top: -100px;
+    margin-top: -10px;
+
+
+}
+.dairy-pic{
+    margin-top: -10px;
+    height:220px;
+    width: 210px;
+    padding-top:50px;
+}
+
+.kaartehan-title{
+    font-family: "Dancing Script", cursive;
+    font-optical-sizing: auto;
+    color:white;
+    font-size: 80px;
+    font-style: italic;
+    justify-self: center;
+
+}
