@@ -4,6 +4,7 @@ const path = require('path');
 const session = require('express-session');
 const FoodRoutes = require('./routes/FoodProductRoutes');
 const CartRoutes = require('./routes/CartRoutes');
+const CartController = require('./controllers/CartController');
 
 const app = express();
 app.use(express.json()) 
@@ -34,8 +35,8 @@ app.use('/api/foods', FoodRoutes);
 app.use('/api/cart', CartRoutes);
 
 
-app.get('/', (req, res) => {
-    res.send("I love you baby");
+app.get('/', async (req, res) => {
+    
 });
 
 
