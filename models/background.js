@@ -15,8 +15,7 @@ const sendExpirationEmail = async (items) => {
     const sentFrom = new Sender("bren@trial-pq3enl6y3omg2vwr.mlsender.net", "FridgeHero");
       
     const recipients = [
-        new Recipient("bomber8183@gmail.com", "Brendan Castillo")
-        // new Recipient("matthew_wassmer@dlsu.edu.ph", "Matthew Wassmer")
+        new Recipient("bomber8184@icloud.com", "Brendan Castillo")
     ];
 
     const text = "Hey testuser! \n\nHope you're doing awesome! 😊\n\nWe just wanted to drop you a quick reminder from FridgeHero that some of the goodies in your fridge are about to hit their expiration dates.\n\nWe're all about helping you make the most of your groceries and avoid any food waste!\n\n🌱Check out what's on the list of soon-to-expire items:\n\n\t- Porterhouse Steak\n\n\nTime to get creative with your meals and use up these ingredients before they go bad! 🍳🥗 And hey, if you're ever stuck for ideas on how to use them, give our FridgeHero a try. We've got your back! 💪\n\nThanks for being a part of the FridgeHero fam! Keep on rockin' those culinary adventures! 🚀\n\n\nCheers,\nThe FridgeHero Crew"
@@ -51,20 +50,51 @@ const sendExpirationEmail = async (items) => {
     }
 }
 
-const MealPlanEmail = async (items) => {
+const sendCartEmail = async (items) => {
     require('dotenv').config();
 
+    const html = `
+    <p>Hey there!</p>
+    <p>We hope noticed you're diet is more inclined to lean meats and more protein 💪</p>
+    <p>Here's a curated selection of items for your next FridgeHero Haul 😉😉:</p>
+    <ul>
+        <li>Chicken Breast</li>
+        <li>Salmon</li>
+        <li>Broccoli</li>
+        <li>Spinach</li>
+        <li>Quinoa</li>
+    </ul>
+    <p>These items are packed with the nutrients you need to fuel your workouts and promote muscle growth while keeping your diet lean and clean. 🥦🍗</p>
+    <p>Don't forget to include these in your cart and enjoy the gains! 💪 If you need more tips or personalized recommendations, our FridgeHero app is here to help you optimize your nutrition for your fitness goals!</p>
+    <p>Keep crushing those workouts and stay awesome!</p>
+    <p>Cheers,<br>The FridgeHero Team</p>
+    <img src="https://lh3.googleusercontent.com/drive-viewer/AKGpihZvAAEZfFSwiXtkWMxPbmE91-4Son8p2zicVObI7y7MOsAKXXMBF2xYvJx8ZS65ei2ne7AxXdp6_YBHtfxJEmbV7QhA8hlJrxQ=s2560" alt="FridgeHero Logo" style="width: 200px; height: auto;">
+    `
     const mailerSend = new MailerSend({
         apiKey: process.env.API_MAILER_KEY,
     });
 
-    const sentFrom = new Sender("bren@trial-pq3enl6y3omg2vwr.mlsender.net", "FridgeHero");
+
+    const sentFrom = new Sender("SuperChef@trial-pq3enl6y3omg2vwr.mlsender.net", "Super Chef");
       
     const recipients = [
-        new Recipient("bomber8183@gmail.com", "Brendan Castillo")
-        // new Recipient("matthew_wassmer@dlsu.edu.ph", "Matthew Wassmer")
+        new Recipient("bomber8184@icloud.com", "Brendan Castillo")
     ];
-      
+
+    const emailParams = new EmailParams()
+        .setFrom(sentFrom)
+        .setTo(recipients)
+        .setReplyTo(sentFrom)
+        .setSubject("🥑 Your SuperChef Cart Recommendations! 🍓")
+        .setHtml(html)
+
+    try {
+        await mailerSend.email.send(emailParams);
+        console.log('Email sent successfully.');
+    }catch (error) {
+        console.error('Failed to send email:', error);
+    }
+
 
 }
 
@@ -134,7 +164,12 @@ const background = async () => {
             });
 
             // Send expiration email
-            // await sendExpirationEmail(perishedItems);
+            await sendExpirationEmail(perishedItems);
+
+            // Send cart email after 10 seconds
+            await new Promise(resolve => setTimeout(resolve, 10000));
+            await sendCartEmail();
+
 
             // Update the document in the database with plain JavaScript objects
             const fridgeRef = doc(fridgeCollection, username);
@@ -151,7 +186,7 @@ const stopBackground = () => {
     clearInterval(interval);
 }
 
-module.exports = {background, stopBackground};
+module.exports = {background, stopBackground, sendCartEmail};
 
 
 
