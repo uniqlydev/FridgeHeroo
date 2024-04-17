@@ -40,7 +40,6 @@ app.use('/api/fridge', FridgeRoutes)
 
 app.get('/', async (req, res) => {
     res.render('homepage/index', { title: 'Homepage' });
-
 });
 
 
