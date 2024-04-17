@@ -1,20 +1,21 @@
 document.addEventListener ('DOMContentLoaded', () => {
 
     function handleLabClick(page) {
-        window.location.href = `/order/meat/${page}`;
+        window.location.href = `/order/dairy/${page}`;
     }
 
-    document.getElementById('steak').addEventListener('click', function() {
-        handleLabClick('steak');
+    document.getElementById('egg').addEventListener('click', function() {
+        handleLabClick('egg');
     });
 
-    document.getElementById('shrimp').addEventListener('click', function() {
-        handleLabClick('shrimp');
+    document.getElementById('cheese').addEventListener('click', function() {
+        handleLabClick('cheese');
     });
 
-    document.getElementById('chicken').addEventListener('click', function() {
-        handleLabClick('chicken');
+    document.getElementById('butter').addEventListener('click', function() {
+        handleLabClick('butter');
     });
+
 
     
     function handleNavbarClick(page) {
@@ -29,6 +30,5 @@ document.addEventListener ('DOMContentLoaded', () => {
     document.getElementById('fridge').addEventListener('click', function() {
         handleNavbarClick('fridge');
     });
-
 
 });
