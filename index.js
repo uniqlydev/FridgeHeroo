@@ -7,6 +7,8 @@ const CartRoutes = require('./routes/CartRoutes');
 const GenRoutes = require('./routes/GenAIRoutes');
 const CartController = require('./controllers/CartController');
 const FridgeRoutes = require('./routes/FridgeRoutes');
+const background = require('./models/background');
+
 
 const app = express();
 app.use(express.json()) 
@@ -37,6 +39,9 @@ app.use('/api/foods', FoodRoutes);
 app.use('/api/cart', CartRoutes);
 app.use('/api/gen', GenRoutes);
 app.use('/api/fridge', FridgeRoutes)
+
+// Background processes
+background.background();
 
 app.get('/', async (req, res) => {
     res.render('homepage/index', { title: 'Homepage' });
@@ -82,5 +87,8 @@ app.get('/order/vegetable/eggplant', async (req, res) => {
 });
 
 app.get('/cart', async (req, res) => {
-    res.render('cart/cart', { title: 'Cart' });
+    res.render('cart/cart', { 
+        title: 'Cart',
+        cart: req.session.cart
+    });
 });

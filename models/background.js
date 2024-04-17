@@ -75,7 +75,8 @@ const getAllPerishedItems = async (items) => {
     return items.filter(item => item.perished);
 };
 
-exports.background = async (req, res) => {
+
+const background = async () => {
     try {
         const username = "testuser";
 
@@ -100,54 +101,35 @@ exports.background = async (req, res) => {
             // Get all perished items
             const perishedItems = await getAllPerishedItems(items);
 
-            // Print each perished items
+            // Convert UserFridge objects to plain JavaScript objects
+            const updatedItems = items.map(item => ({
+                item: item.item,
+                quantity: item.quantity,
+                perishabledays: item.perishabledays,
+                perished: item.perished // Include perished status if needed
+            }));
+
+            // Print each perished item
             perishedItems.forEach(item => {
                 console.log(`Perished Item: ${item.item}`);
             });
 
-            // Send expiration email after 3 seconds
-            await new Promise(resolve => setTimeout(resolve, 3000));
-            await sendExpirationEmail(perishedItems);
+            // Send expiration email
+            // await sendExpirationEmail(perishedItems);
 
-
-            // update the document in the database
+            // Update the document in the database with plain JavaScript objects
             const fridgeRef = doc(fridgeCollection, username);
-            await setDoc(fridgeRef, { items: items });
-
-            res.status(200).send("Background job completed successfully");
-
+            await setDoc(fridgeRef, { items: updatedItems });
         } else {
-            res.status(404).send("Fridge document not found for the specified username");
+            console.log("Fridge document not found for the specified username");
         }
     } catch (error) {
-        res.status(500).send(error.message);
+        console.error("Error in background job:", error);
     }
 };
 
-exports.retrieveUserFridge = async (req, res) => {
-    try {
-        const username = "testuser";
+exports.background = background;
 
-        const fridgeCollection = collection(db, 'Fridge');
-        const fridgeSnapshot = await getDocs(fridgeCollection);
-
-        // Find the document with the specified username
-        let fridgeData;
-        fridgeSnapshot.forEach(doc => {
-            if (doc.id === username) {
-                fridgeData = doc.data();
-            }
-        });
-
-        if (fridgeData) {
-            res.status(200).send(fridgeData);
-        } else {
-            res.status(404).send("Fridge document not found for the specified username");
-        }
-    } catch (error) {
-        res.status(500).send(error.message);
-    }
-}
 
 
 
