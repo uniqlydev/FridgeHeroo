@@ -1,0 +1,98 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100..900&family=Noto+Serif+Gurmukhi:wght@100..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Xanh+Mono:ital@0;1&display=swap');
+
+/* cursive font */
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&family=Noto+Sans+JP:wght@100..900&family=Noto+Serif+Gurmukhi:wght@100..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Xanh+Mono:ital@0;1&display=swap');
+
+ /*logo font  */
+
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&family=Linefont:wght@4..1000&family=Noto+Sans+JP:wght@100..900&family=Noto+Serif+Gurmukhi:wght@100..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Xanh+Mono:ital@0;1&display=swap');
+
+/* logo-text font */
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Linefont:wght@4..1000&family=Noto+Sans+JP:wght@100..900&family=Noto+Serif+Gurmukhi:wght@100..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Xanh+Mono:ital@0;1&display=swap');
+
+body{
+    background-image: url('../../assets/background-pic.png');
+    background-repeat: no-repeat; 
+    font-family: "Playfair Display", serif;
+    font-optical-sizing: auto;
+    margin: 0;
+    padding: 0;
+    background-size: 100% ; /* Cover the entire viewport */
+    
+}
+
+ul {
+    list-style-type: none; /* Remove default list styles */
+    padding: 0;
+  }
+  
+  li {
+    display: inline; /* Display list items horizontally */
+    margin-right: 10px; /* Add some space between items */
+  }
+  
+a{
+    font-family: "Playfair Display", serif;
+    color: #2B4447;
+}
+
+.nav-bar{
+    padding-left: 500px;
+}
+
+
+.logo{
+    font-family: "Linefont", system-ui;
+    /* color: #CEA0A4; */
+    color: white;
+    font-size: 80px;
+    margin-bottom: -30px;
+    margin-top: -30px;
+    
+
+}
+
+.logo-container{
+    margin-left: -2100px;
+}
+
+.logo-text{
+    font-family: "Lato", sans-serif;
+    margin-top: -10px;
+    font-size: 30px;
+    color: #CEA0A4;
+ 
+}
+
+.nav-links{
+    color: #2B4447;
+    font-size: 23px;
+    margin: 0px;
+    margin-top: -90px;
+    margin-left:700px;
+
+
+}
+
+.fridge, .cart{
+    width: 33px;
+    height:30px;
+    margin-right: 40px;
+    margin-left:20px;
+    margin-bottom: -4px;
+}
+
+
+.link1, .link2, .link3{
+    margin-right: 70px;
+}
+
+
+p{
+    color: darkslategray;
+    font-size: 15px;
+    text-align: center;
+    padding: 10px;
+}
+
