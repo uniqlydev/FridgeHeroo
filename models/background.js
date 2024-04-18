@@ -15,7 +15,7 @@ const sendExpirationEmail = async (items) => {
     const sentFrom = new Sender("bren@trial-pq3enl6y3omg2vwr.mlsender.net", "FridgeHero");
       
     const recipients = [
-        new Recipient("bomber8184@icloud.com", "Brendan Castillo")
+        new Recipient("bomber8183@gmail.com", "Brendan Castillo")
     ];
 
     const text = "Hey testuser! \n\nHope you're doing awesome! 😊\n\nWe just wanted to drop you a quick reminder from FridgeHero that some of the goodies in your fridge are about to hit their expiration dates.\n\nWe're all about helping you make the most of your groceries and avoid any food waste!\n\n🌱Check out what's on the list of soon-to-expire items:\n\n\t- Porterhouse Steak\n\n\nTime to get creative with your meals and use up these ingredients before they go bad! 🍳🥗 And hey, if you're ever stuck for ideas on how to use them, give our FridgeHero a try. We've got your back! 💪\n\nThanks for being a part of the FridgeHero fam! Keep on rockin' those culinary adventures! 🚀\n\n\nCheers,\nThe FridgeHero Crew"
@@ -78,7 +78,7 @@ const sendCartEmail = async (items) => {
     const sentFrom = new Sender("SuperChef@trial-pq3enl6y3omg2vwr.mlsender.net", "Super Chef");
       
     const recipients = [
-        new Recipient("bomber8184@icloud.com", "Brendan Castillo")
+        new Recipient("bomber8183@gmail.com", "Brendan Castillo")
     ];
 
     const emailParams = new EmailParams()
