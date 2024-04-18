@@ -3,7 +3,7 @@
 ## Setup
 - Clone the repository
 - Run `npm install`
-- Create a .env file in the root directory (Refer to the .env.example file for the required environment variables)
+- Remove the .test in .env.test for the .env conf
 - Run `npm run start`
 
 ## IMPORTANT NOTE
