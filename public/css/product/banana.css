@@ -13,7 +13,6 @@
 
 body{
     background-image: url('../../assets/product-bg.svg');
-    repeat; 
     font-family: "Playfair Display", serif;
     font-optical-sizing: auto;
     margin: 0;

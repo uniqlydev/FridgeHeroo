@@ -88,6 +88,13 @@ app.get('/order/vegetable/bellpepper', async (req, res) => {
 
 });
 
+
+app.get('/registerProduct', async (req, res) => {
+    res.render('cart/register', { title: 'cheese' });
+});
+
+
+
 app.get('/cart', async (req, res) => {
     if (req.session.cart) {
         console.log("Cart items: ", req.session.cart.items);
@@ -142,3 +149,4 @@ app.get('/confirm', async (req, res) => {
 app.get('/superchef', async (req, res) => {
     res.render('SuperChef/index', { title: 'SuperChef' });
 });
+
